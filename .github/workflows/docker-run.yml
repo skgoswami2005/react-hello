@@ -10,13 +10,13 @@ jobs:
     steps:
       - name: Pull Docker image
         run: |
-          docker pull skgoswami/hello-react:latest
+          docker pull skgoswami/react-hello:latest
 
       - name: Stop and Remove Existing Container
         run: |
-          docker stop hello-react || true
-          docker rm hello-react || true
+          docker stop react-hello || true
+          docker rm react-hello || true
 
       - name: Run Docker Container
         run: |
-          docker run -d --name hello-react -p 3000:3000 skgoswami/hello-react:latest
+          docker run -d --name react-hello -p 3000:3000 skgoswami/react-hello:latest

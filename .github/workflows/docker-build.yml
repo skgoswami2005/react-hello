@@ -24,8 +24,8 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -t skgoswami/hello-react:latest .
-          docker push skgoswami/hello-react:latest
+          docker build --platform linux/amd64,linux/arm64 -t skgoswami/react-hello:latest .
+          docker push skgoswami/react-hello:latest
 
       - name: Trigger local workflow
         uses: actions/github-script@v6
@@ -33,7 +33,7 @@ jobs:
           script: |
             github.rest.actions.createWorkflowDispatch({
               owner: 'skgoswami2005',
-              repo: 'hello-react',
+              repo: 'react-hello',
               workflow_id: 'docker-run.yml',
               ref: 'main'
             })
